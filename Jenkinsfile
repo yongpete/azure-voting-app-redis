@@ -1,6 +1,6 @@
 node {
   parameters {
-    string(name: 'ENVIRONMENT', defaultValue: 'qa')
+    string(name: 'ENVIRONMENT')
   }
   stage('PowerShell') {
     switch("${params.ENVIRONMENT}") { 
