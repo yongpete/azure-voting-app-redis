@@ -3,8 +3,7 @@ node {
     string(name: 'ENVIRONMENT', defaultValue: 'qa')
   }
   stage('PowerShell') {
-    def deployTo = "${ENVIRONMENT}"
-    switch("${ENVIRONMENT}") { 
+    switch("${params.ENVIRONMENT}") { 
       case 'qa': 
         println "This is a test"
         pwsh(script: "New-Item -Path $WORKSPACE -ItemType File -WhatIf")
