@@ -1,17 +1,10 @@
 node {
-  parameters {
-    string(name: 'ENVIRONMENT', defaultValue: 'prod')
-  }
-  stage('PowerShell') {
-    switch(params.ENVIRONMENT) { 
-      case 'qa': 
-        println "This is a test"
-        pwsh(script: "New-Item -Path $WORKSPACE -ItemType File -WhatIf")
-        break
-      case 'prod': 
-        println "This is not a test"
-        pwsh(script: "New-Item -Path $WORKSPACE -ItemType File")
-        break
+  stage('Echo on master') {
+    if (env.BRANCH_NAME == 'master') {
+      echo 'This is the master branch'
+    } else {
+        echo 'This is NOT the master branch'
+      }
     }
-  } 
+  }
 }
