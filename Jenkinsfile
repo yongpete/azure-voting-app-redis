@@ -1,20 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('Echo on master - Declarative') {
-      when { branch 'master' }
-      steps {
-        echo 'This is the master branch'
-      }
-    }
-    stage('Echo on master - Scripted') {
+    stage('Call Library Hello-World Function') {
       steps {
         script {
-          if (env.BRANCH_NAME == 'master') {
-            echo 'This is the master branch'
-          } else {
-            echo 'This is NOT the master branch'
-          }
+          helloWorld()
         }
       }
     }
