@@ -2,9 +2,9 @@ pipeline {
   agent any
   stages {
     stage('Echo on master - Declarative') {
-      when { branch 'master' }
+      when { branch pattern: "\\w-pipeline", comparator: "REGEXP" }
       steps {
-        echo 'This is the master branch'
+        echo 'This is a pipeline branch'
       }
     }
     stage('Echo on master - Scripted') {
